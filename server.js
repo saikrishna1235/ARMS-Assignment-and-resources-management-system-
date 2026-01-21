@@ -1,29 +1,48 @@
 const express = require("express");
 const cors = require("cors");
+
+require("./db"); // 🔥 MySQL connection
+require("dotenv").config();
+
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin");
 const teacherRoutes = require("./routes/teacher");
 const studentRoutes = require("./routes/student");
 const adminEnroll = require("./routes/adminEnroll");
-const multer = require("multer");
 
 const app = express();
+
+// Disable caching
 app.use((req, res, next) => {
-    res.setHeader("Cache-Control", "no-store");
-    next();
+  res.setHeader("Cache-Control", "no-store");
+  next();
 });
 
-app.use(cors());
-app.use(express.json());    
+// Middleware
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Health check
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
+// Routes
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/teacher", teacherRoutes);
-app.use('/uploads', express.static('uploads'));
 app.use("/student", studentRoutes);
 app.use("/admin/enroll", adminEnroll);
+app.use("/uploads", express.static("uploads"));
 
-app.listen(5000, () => {
-    console.log("Backend running on http://localhost:5000");
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Backend running on port ${PORT}`);
 });
