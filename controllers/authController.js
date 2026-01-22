@@ -1,10 +1,3 @@
-exports.login = (req, res) => {
-    console.log("LOGIN BODY 👉", req.body);
-
-    const { role, username, password } = req.body;
-    console.log("USERNAME 👉", username);
-    console.log("ROLE 👉", role);
-
 const bcrypt = require("bcrypt");
 const db = require("../db");
 
