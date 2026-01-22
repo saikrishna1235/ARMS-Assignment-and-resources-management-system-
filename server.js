@@ -30,8 +30,7 @@ app.use(cors({
   credentials: true
 }));
 
-// 🔥 THIS LINE IS REQUIRED FOR PREFLIGHT
-app.options("/*", cors());
+
 
 
 
