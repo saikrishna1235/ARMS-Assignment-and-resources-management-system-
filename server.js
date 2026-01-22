@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 require("./db"); // 🔥 MySQL connection
-require("dotenv").config();
+
 
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin");
