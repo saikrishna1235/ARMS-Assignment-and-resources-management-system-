@@ -33,11 +33,6 @@ app.use(cors({
 
 
 
-// ✅ Handle CORS preflight properly
-app.options("/auth/*", cors());
-app.options("/admin/*", cors());
-app.options("/teacher/*", cors());
-app.options("/student/*", cors());
 
 
 
