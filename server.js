@@ -22,13 +22,14 @@ app.use((req, res, next) => {
 app.use(cors({
   origin: [
     "https://arms-assignment-and-resources-manag.vercel.app",
+    "https://arms-assignment-and-resources-manag.vercel.app/",
     "http://localhost:5500",
     "http://127.0.0.1:5500"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
-  credentials: false
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
 
 
 
