@@ -25,7 +25,7 @@ app.use(cors({
     "http://localhost:5500",
     "http://127.0.0.1:5500"
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
   credentials: false
 }));
@@ -33,6 +33,11 @@ app.use(cors({
 
 
 
+// ✅ Handle CORS preflight properly
+app.options("/auth/*", cors());
+app.options("/admin/*", cors());
+app.options("/teacher/*", cors());
+app.options("/student/*", cors());
 
 
 
