@@ -31,7 +31,8 @@ app.use(cors({
 }));
 
 // 🔥 THIS LINE IS REQUIRED FOR PREFLIGHT
-app.options("*", cors());
+app.options("/*", cors());
+
 
 
 
