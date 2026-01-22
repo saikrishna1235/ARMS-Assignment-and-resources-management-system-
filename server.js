@@ -25,9 +25,14 @@ app.use(cors({
     "http://localhost:5500",
     "http://127.0.0.1:5500"
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+// 🔥 THIS LINE IS REQUIRED FOR PREFLIGHT
+app.options("*", cors());
+
 
 
 app.use(express.json());
